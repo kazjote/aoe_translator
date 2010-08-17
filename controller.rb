@@ -14,6 +14,11 @@ get '/' do
   haml :index
 end
 
+get '/main.css' do
+  content_type 'text/css', :charset => 'utf-8'
+  sass :main
+end
+
 post '/' do
   if has_file?(:dictionary) && has_file?(:to_translate)
     dictionary = TranslationFile.parse(@dictionary.path)

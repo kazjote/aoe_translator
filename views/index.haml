@@ -8,26 +8,48 @@
     %link{:rel => "stylesheet", :href => "main.css", :type => "text/css"}
 
   %body
-    %header
-      %h1 Age of Empires 3 translation files merger
 
-    %ul
-      %p This application takes 2 xml files encoded in UTF16:
-      %li Directory
-      %li Translatable
+    .container
+      %header
+        %h1 Age of Empires 3 translation files merger
 
-    %p It than outputs
+      %section
+        %h2 Introduction
 
-    %form{:action => '/', :method => 'post', :enctype=>"multipart/form-data"}
-      %dl
-        %dt
-          %label{:for => 'dictionary'} Dictionary
+        %ul
+          %p This application takes 2 xml files encoded in UTF16:
+          %li Directory
+          %li Translatable
+
+        %p It than outputs merged file.
+
+      %section
+
+        %h2 Typical use case
+
+        %p.warning Always remember to make backup copy of your files.
+
+        %p I have polish version of AoE3 but want to play with my friend from other country. Unfortunately, she doesn't know Polish.
+
+        %p In order to translate the game I got file <em>stringtable.xml</em> from English game version. I have 3 files with translations in my Age of Empires 3 data directory in <pre>Program Files (x86)/Microsoft Games/Age of Empires III/data</pre> These are <em>stringtable.xml</em>, <em>stringtablex.xml</em>, <em>stringtabley.xml</em>.
+
+        %p So I upload, using below form, English file <em>stringtable.xml</em> as <em>dictionary</em> and my 3 Polish <em>stringtable*.xml</em> files as <em>to_translate</em>. I replace than the files in <pre>Program Files (x86)/Microsoft Games/Age of Empires III/data</pre> with the generated ones.
+
+        %p The last thing I need to do is using AoE3Ed from <a href='http://aoe3.heavengames.com/cgi-bin/forums/display.cgi?action=ct&f=1,23622,,all'>this mod forum</a> to regenerate <em>stringtable*.xml.xmb</em> files.
+
+      %form{:action => '/', :method => 'post', :enctype=>"multipart/form-data"}
+        %p.warning Merging may take up to 1 minute + time to send files to the server. Do not refresh!
         %dl
-          %input{:type => 'file', :id => 'dictionary', :name => 'dictionary'}
-        %dt
-          %label{:for => 'to_translate'} To translate
-        %dl
-          %input{:type => 'file', :id => 'to_translate', :name => 'to_translate'}
+          %dt
+            %label{:for => 'dictionary'} Dictionary
+          %dl
+            %input{:type => 'file', :id => 'dictionary', :name => 'dictionary'}
+          %dt
+            %label{:for => 'to_translate'} To translate
+          %dl
+            %input{:type => 'file', :id => 'to_translate', :name => 'to_translate'}
 
-      %input{:type => 'submit', :value => 'Process'}
+        %input{:type => 'submit', :value => 'Process'}
 
+      %footer
+        %p Use at your own risk! Source code available at <a href='http://github.com/kazjote/aoe_translator'>my github account</a> under MIT license.

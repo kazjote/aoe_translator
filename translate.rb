@@ -8,6 +8,8 @@ class TranslationFile < Struct.new(:doc)
 
   def self.parse(path)
     data = File.read(path)
+    data = Iconv.conv('utf-8', 'utf-16', data)
+    data = data[41..-1]
     doc = REXML::Document.new(data)
     new(doc)
   end
