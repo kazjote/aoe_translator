@@ -1,0 +1,33 @@
+!!! HTML5
+
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+    %title AoE3 translation files merger
+
+    %link{:rel => "stylesheet", :href => "main.css", :type => "text/css"}
+
+  %body
+    %header
+      %h1 Age of Empires 3 translation files merger
+
+    %ul
+      %p This application takes 2 xml files encoded in UTF16:
+      %li Directory
+      %li Translatable
+
+    %p It than outputs
+
+    %form{:action => '/', :method => 'post', :enctype=>"multipart/form-data"}
+      %dl
+        %dt
+          %label{:for => 'dictionary'} Dictionary
+        %dl
+          %input{:type => 'file', :id => 'dictionary', :name => 'dictionary'}
+        %dt
+          %label{:for => 'to_translate'} To translate
+        %dl
+          %input{:type => 'file', :id => 'to_translate', :name => 'to_translate'}
+
+      %input{:type => 'submit', :value => 'Process'}
+
